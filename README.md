@@ -18,10 +18,10 @@ Could be updated to also utilize the sites provided RESTful service.  Should als
 
 # Test Cases
 ### testLoginSucceed()
-Tests login success using valid login parameters. 
+* Tests login success using valid login parameters. 
 ### testLoginFailure()
-Test login failure using *invalid login.*
+* Test login failure using *invalid login.*
 ### testCapsLockFailureUsername()
-Test login failure using all-capital *username.*
+* Test login failure using all-capital *username.*
 ### testCapsLockFailurePassword()
-Test login failure using all-capital *password.*
+* Test login failure using all-capital *password.*
