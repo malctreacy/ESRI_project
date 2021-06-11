@@ -6,8 +6,8 @@ Date: 6/10/21
 
 # Dependencies
 
-Selenium 3.14 (Included)
-Geckodriver (Included)
+* Selenium 3.14 (Included)
+* Geckodriver (Included)
 
 # Project Structure
 ### ParaBankTest
