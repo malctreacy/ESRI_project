@@ -59,4 +59,40 @@ class ParaBankTest {
         assertEquals(title, "ParaBank | Error");
     }
 
+    @Test()
+    void testCapsLockFailureUsername(){
+        RegisterUser newUser = new RegisterUser();
+        newUser.addUser();
+
+        // Target Login Elements
+        WebElement username = driver.findElement(By.name("username"));
+        WebElement password = driver.findElement(By.name("password"));
+        WebElement loginButton = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div[1]/div/form/div[3]/input"));
+
+        // Login Attempt (Valid)
+        username.sendKeys("TEST");
+        password.sendKeys("test2");
+        loginButton.click();
+        String title = driver.getTitle();
+        assertEquals(title, "ParaBank | Error");
+    }
+
+    @Test()
+    void testCapsLockFailurePassword(){
+        RegisterUser newUser = new RegisterUser();
+        newUser.addUser();
+
+        // Target Login Elements
+        WebElement username = driver.findElement(By.name("username"));
+        WebElement password = driver.findElement(By.name("password"));
+        WebElement loginButton = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div[1]/div/form/div[3]/input"));
+
+        // Login Attempt (Valid)
+        username.sendKeys("test");
+        password.sendKeys("TEST1");
+        loginButton.click();
+        String title = driver.getTitle();
+        assertEquals(title, "ParaBank | Error");
+    }
+
 }
