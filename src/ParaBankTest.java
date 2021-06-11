@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.By;
@@ -5,9 +6,7 @@ import org.openqa.selenium.By;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.Assert;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
 
 class ParaBankTest {
     public String baseURL = "https://parabank.parasoft.com/parabank/index.htm";
@@ -18,6 +17,11 @@ class ParaBankTest {
         System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
         driver = new FirefoxDriver();
         driver.get(baseURL);
+    }
+
+    @AfterEach
+    public void end(){
+        driver.quit();
     }
 
     @Test()
@@ -51,7 +55,8 @@ class ParaBankTest {
         username.sendKeys("test2");
         password.sendKeys("test2");
         loginButton.click();
+        String title = driver.getTitle();
+        assertEquals(title, "ParaBank | Error");
     }
-
 
 }
