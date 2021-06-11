@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 public class RegisterUser {
 
         // Should take multiple user registrations..
-        static void addUser() throws InterruptedException{
+        static void addUser(){
             System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
             FirefoxDriver driver = new FirefoxDriver();
             driver.get("https://parabank.parasoft.com/parabank/register.htm");
@@ -42,7 +42,6 @@ public class RegisterUser {
             // Register Button
             registerButton.click();
 
-            Thread.sleep(1000);
             driver.quit();
         }
 

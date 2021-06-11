@@ -2,28 +2,56 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.By;
 
-public class ParaBankTest {
-    public static void main(String [] args) throws InterruptedException {
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.Assert;
+import org.junit.After;
+import org.junit.Before;
+
+class ParaBankTest {
+    public String baseURL = "https://parabank.parasoft.com/parabank/index.htm";
+    public FirefoxDriver driver;
+
+    @BeforeEach
+    public void setup() {
         System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
-        FirefoxDriver driver = new FirefoxDriver();
+        driver = new FirefoxDriver();
+        driver.get(baseURL);
+    }
+
+    @Test()
+    void testLoginSucceed() {
         RegisterUser newUser = new RegisterUser();
         newUser.addUser();
-
-        // Parabank Mainpage
-        driver.get("https://parabank.parasoft.com/parabank/index.htm");
 
         // Target Login Elements
         WebElement username = driver.findElement(By.name("username"));
         WebElement password = driver.findElement(By.name("password"));
         WebElement loginButton = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div[1]/div/form/div[3]/input"));
 
-        // Login Attempt
+        // Login Attempt (Valid)
         username.sendKeys("test");
         password.sendKeys("test1");
         loginButton.click();
-        Thread.sleep(10000);
 
-        // Close out Driver
-        driver.quit();
+        String title = driver.getTitle();
+        System.out.println(title);
+        assertEquals(title, "ParaBank | Accounts Overview");
     }
+
+    @Test()
+    void testLoginFail(){
+        // Target Login Elements
+        WebElement username = driver.findElement(By.name("username"));
+        WebElement password = driver.findElement(By.name("password"));
+        WebElement loginButton = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div[1]/div/form/div[3]/input"));
+
+        // Login Attempt (Valid)
+        username.sendKeys("test2");
+        password.sendKeys("test2");
+        loginButton.click();
+    }
+
+
 }
