@@ -19,7 +19,7 @@ public class RegisterUser {
             WebElement state = driver.findElement(By.name("customer.address.state"));
             WebElement zip = driver.findElement(By.name("customer.address.zipCode"));
             WebElement SSN = driver.findElement(By.name("customer.ssn"));
-
+            WebElement registerButton = driver.findElementByXPath("//*[@id=\"customerForm\"]/table/tbody/tr[13]/td[2]/input");
             // Username Entry Field
             WebElement username = driver.findElement(By.name("customer.username"));
 
@@ -39,8 +39,10 @@ public class RegisterUser {
             password.sendKeys("test1");
             passwordVerification.sendKeys("test1");
 
-            Thread.sleep(1000);
+            // Register Button
+            registerButton.click();
 
+            Thread.sleep(1000);
             driver.quit();
         }
 
