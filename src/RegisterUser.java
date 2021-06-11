@@ -12,8 +12,8 @@ public class RegisterUser {
             driver.get("https://parabank.parasoft.com/parabank/register.htm");
 
             // Locate Registration Elements
-            WebElement firstName = driver.findElement(By.name("customer.firstname"));
-            WebElement lastName = driver.findElement(By.name("customer.lastname"));
+            WebElement firstName = driver.findElement(By.name("customer.firstName"));
+            WebElement lastName = driver.findElement(By.name("customer.lastName"));
             WebElement address = driver.findElement(By.name("customer.address.street"));
             WebElement city = driver.findElement(By.name("customer.address.city"));
             WebElement state = driver.findElement(By.name("customer.address.state"));
@@ -27,7 +27,21 @@ public class RegisterUser {
             WebElement password = driver.findElement(By.name("customer.password"));
             WebElement passwordVerification = driver.findElement(By.name("repeatedPassword"));
 
+            // Add New User Information
+            firstName.sendKeys("Kobe");
+            lastName.sendKeys("Bryant");
+            address.sendKeys("1234 Main Street");
+            city.sendKeys("Redlands");
+            state.sendKeys("CA");
+            zip.sendKeys("92359");
+            SSN.sendKeys("123456789");
+            username.sendKeys("test");
+            password.sendKeys("test1");
+            passwordVerification.sendKeys("test1");
+
             Thread.sleep(1000);
+
+            driver.quit();
         }
 
 }
